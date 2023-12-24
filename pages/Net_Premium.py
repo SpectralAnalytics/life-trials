@@ -4,10 +4,6 @@ import numpy as np
 
 st.set_page_config(layout="wide")
 
-st.title("Insurance EPV calculator")
-
-st.subheader("An App by Marcel")
-
 st.markdown("Data gathered from US Social Security's [Actuarial Life Table](https://www.ssa.gov/oact/STATS/table4c6.html).")
 
 life_sheets = {
@@ -21,10 +17,12 @@ option_year = st.selectbox(
 
 life_table = life_sheets[option_year]
 
-tab1, tab2 = st.tabs(["EPV Calculator", "Life Table"])
+tab1, tab2 = st.tabs(["Calculate Net Premium", "Life Table"])
 
 with tab1:
     st.subheader("Calculate Now!")
+
+    st.write("All calculations are done using only the death probability columns.")
 
     col1, col2= st.columns(2)
     with col1:
@@ -54,9 +52,9 @@ with tab1:
     with col2:
         S = st.number_input(
             label="Sum insured:",
-            min_value=1000,
-            max_value=100000,
-            step=1000,
+            min_value=10000,
+            max_value=10000000,
+            step=10000,
             placeholder="Please key in the sum insured...",
         )
 
